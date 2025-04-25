@@ -1,0 +1,66 @@
+<div class="container">
+  <h2>Crear Proyecto</h2>
+
+  <form (ngSubmit)="onSubmit()" #projectForm="ngForm">
+    <div class="form-group">
+      <label for="name">Nombre del Proyecto:</label>
+      <input
+        type="text"
+        id="name"
+        class="form-control"
+        required
+        [(ngModel)]="project.name"
+        name="name"
+        #name="ngModel"
+      />
+      @if (name.invalid && name.touched) {
+        <div class="text-danger">
+          El nombre es requerido.
+        </div>
+      }      
+    </div>
+
+    <div class="form-group">
+      <label for="descripcion">Descripción:</label>
+      <textarea
+        id="descripcion"
+        class="form-control"
+        required
+        [(ngModel)]="project.description"
+        name="descripcion"
+        #descripcion="ngModel"
+      ></textarea>
+      @if (descripcion.invalid && descripcion.touched) {
+        <div class="text-danger">
+          La descripción es requerida.
+        </div>
+      }
+    </div>
+
+    <div class="form-group">
+      <label for="userId">ID del Usuario:</label>
+      <input
+        type="number"
+        id="userId"
+        class="form-control"
+        required
+        [(ngModel)]="project.userId"
+        name="userId"
+        #userId="ngModel"
+      />
+      @if (userId.invalid && userId.touched) {
+        <div class="text-danger">
+          El ID del usuario es requerido.
+        </div>
+      }      
+    </div>
+
+    <button
+      type="submit"
+      class="btn btn-primary"
+      [disabled]="projectForm.invalid"
+    >
+      Crear Proyecto
+    </button>
+  </form>
+</div>

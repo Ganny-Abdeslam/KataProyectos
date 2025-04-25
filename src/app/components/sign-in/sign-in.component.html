@@ -1,0 +1,31 @@
+<div class="wrapper">
+    @if (!loading) {
+    <div class="body">
+        <img src="../../../assets/img/login.png" class="logo" alt="Login">
+        <h3>Registrar Usuario</h3>
+        <div class="form-floating mb-3 mt-3">
+            <input type="text" [(ngModel)]="username" class="form-control" placeholder="Ingrese Usuario">
+            <label>Usuario</label>
+        </div>
+        <div class="form-floating mb-3 mt-3">
+            <input type="email" [(ngModel)]="email" class="form-control" placeholder="correo@prueba.com">
+            <label>email</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="password" [(ngModel)]="password" class="form-control" placeholder="Ingrese Password">
+            <label>Password</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="password" [(ngModel)]="confirmPassword" class="form-control" placeholder="Ingrese Password de Nuevo">
+            <label>Repetir Password</label>
+        </div>
+        <div class="d-grid gap-2">
+            <button type="button" (click)="addUser()" class="btn btn-primary btn-lg">Aceptar</button>
+        </div>
+        <a routerLink="/login">Volver</a>
+    </div>
+    }
+    @if (loading) {
+        <app-spinner></app-spinner>
+    }
+</div>

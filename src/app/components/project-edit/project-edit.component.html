@@ -1,0 +1,41 @@
+<div class="container mt-4">
+    <h2>Editar Proyecto</h2>
+  
+    <form [formGroup]="projectForm" (ngSubmit)="onSubmit()">
+      <div class="mb-3">
+        <label for="nombre" class="form-label">Nombre del Proyecto</label>
+        <input
+          type="text"
+          id="nombre"
+          class="form-control"
+          formControlName="nombre"
+          [class.is-invalid]="nombre.invalid && (nombre.dirty || nombre.touched)"
+        />
+        @if (nombre.invalid && (nombre.dirty || nombre.touched)) {
+          <div class="invalid-feedback">
+            El nombre es requerido.
+          </div>
+        }
+      </div>
+  
+      <div class="mb-3">
+        <label for="descripcion" class="form-label">Descripción</label>
+        <textarea
+          id="descripcion"
+          class="form-control"
+          rows="4"
+          formControlName="descripcion"
+          [class.is-invalid]="descripcion.invalid && (descripcion.dirty || descripcion.touched)"
+        ></textarea>
+        @if (descripcion.invalid && (descripcion.dirty || descripcion.touched)) {
+          <div class="invalid-feedback">
+            La descripción es requerida.
+          </div>
+        }
+      </div>
+  
+      <button type="submit" class="btn btn-primary" [disabled]="projectForm.invalid">Guardar Cambios</button>
+      <button type="button" class="btn btn-secondary ms-2" (click)="cancel()">Cancelar</button>
+    </form>
+  </div>
+  
